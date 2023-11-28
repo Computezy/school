@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+
+
+
+//applying function name
+float distanceFell(int time);
+
+int main()
+{
+
+    // getting the user to input how long they want the ball to fall
+    int userTime = 0;
+    printf("how many seconds do you want the ball to fall?\n");
+    scanf_s("%d", &userTime);
+
+
+    // for string to repeat until the number of seconds is completed
+    for (int time = 1; time <= userTime; time++) {
+        float distance = distanceFell(time);
+        printf("Time passed: %d second  Distance Fell: %.2f meters\n", time, distance);
+
+    }
+
+    return 0;
+}
+
+
+//formula given by directions
+float distanceFell(int time) {
+    const float g = 9.8;
+    float distance = 0.5 * g * time * time;
+    // need to return distance otherwise everything would return 0
+    return distance;
+}
