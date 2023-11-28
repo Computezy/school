@@ -1,17 +1,22 @@
 #include <stdio.h>
 
 // voids do not need to return a value
-void getgrade(int* grade);
+// int* is a pointer to a variable whose datatype is integer.
+//https://www.geeksforgeeks.org/difference-between-sizeofint-and-sizeofint-in-c-c/
+
+void getgrade(int* userGrade);
 void calcAverage(int grades[]);
 int findLowest(int grades[]);
 
 
 
-int main() {
+int main() 
+{
     int grades[5];
 
     // getting five test grades from the user
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 5; i++) 
+    {
         printf("enter test grade %d\n", i + 1);
         getgrade(&grades[i]);
     }
@@ -23,30 +28,35 @@ int main() {
 
 
 // gathering grades from the user
-void getgrade(int* grade) {
-    do {
-        scanf_s("%d", grade);
-        if (*grade < 0 || *grade > 100) {
+void getgrade(int* userGrade) 
+{
+    do 
+    {
+        scanf_s("%d", userGrade);
+        if (*userGrade < 0 || *userGrade > 100) {
             printf("Please enter a grade between 0 and 100\n");
         }
-    } while (*grade < 0 || *grade > 100);
+    } while (*userGrade < 0 || *userGrade > 100);
 }
 
 
 
 // taking the grades from the user and eleminating the lowest number
-void calcAverage(int grades[]) {
+void calcAverage(int grades[]) 
+{
     int lowestNum = findLowest(grades);
     int sum = 0;
 
     //calculating the sum of the 4 highest grades
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 5; i++) 
+    {
         if (i != lowestNum) {
             sum += grades[i];
         }
     }
     //calculating and displaying the avg
     float average = (float)sum / 4;
+    //(float) simplifys the static cast
 
     printf("The average of the four highest grades is %.2f\n", average);
 }
