@@ -4,6 +4,7 @@
 // int* is a pointer to a variable whose datatype is integer.
 //https://www.geeksforgeeks.org/difference-between-sizeofint-and-sizeofint-in-c-c/
 
+
 void getgrade(int* userGrade);
 void calcAverage(int grades[]);
 int findLowest(int grades[]);
@@ -25,6 +26,7 @@ int main()
 
     return 0;
 }
+
 
 
 // gathering grades from the user
