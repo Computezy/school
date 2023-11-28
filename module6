@@ -5,6 +5,8 @@ void getgrade(int* grade);
 void calcAverage(int grades[]);
 int findLowest(int grades[]);
 
+
+
 int main() {
     int grades[5];
 
@@ -46,7 +48,7 @@ void calcAverage(int grades[]) {
     //calculating and displaying the avg
     float average = (float)sum / 4;
 
-    printf("The average of the four highest grades is: %.2f\n", average);
+    printf("The average of the four highest grades is %.2f\n", average);
 }
 
 
