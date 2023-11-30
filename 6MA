@@ -1,0 +1,260 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void randomDiscount(int* discount) {
+    time_t t;
+    srand((unsigned)time(&t));
+    *discount = (rand() % 20) + 1;
+}
+
+void printDiscount(int discount) {
+    printf("You have received a %d%% discount on your ticket.\n", discount);
+}
+
+void printReceipt(float drinkTotal, float appetizerTotal, float entreeTotal, float dessertTotal, float subTotal, int discount, float taxTotal, float billTotal, float tipTotal, float totalDue) {
+    printf("\n\nGooses Fine Dining");
+    printf("\nDrink Total........$%.2f", drinkTotal);
+    printf("\nAppetizer Total....$%.2f", appetizerTotal);
+    printf("\nEntree Total.......$%.2f", entreeTotal);
+    printf("\nDessert Total......$%.2f", dessertTotal);
+    printf("\nSubtotal...........$%.2f", subTotal);
+    printf("\nDiscount applied...%d%%", discount);
+    printf("\nTax total..........$%.2f", taxTotal);
+    printf("\nBill total.........$%.2f", billTotal);
+    printf("\nTip total..........$%.2f", tipTotal);
+    printf("\nTotal due..........$%.2f\n\n", totalDue);
+
+    printf("Thank you for eating at Gooses diner! We look forward to seeing you again soon!\n\n");
+}
+
+float calculateSubtotal(float drinkPrice, float appetizerPrice, float entreePrice, float dessertPrice) {
+    return drinkPrice + appetizerPrice + entreePrice + dessertPrice;
+}
+
+float calculateBillTotal(float subtotal, int discount, float* taxTotal) {
+    *taxTotal = subtotal * 0.0825;
+    return subtotal - (subtotal * discount / 100) + *taxTotal;
+}
+
+static float calculateTip(float billTotal, int tipChoice) {
+    float tipTotal = 0;
+    printf("\n\n\033[0;37mPlease enter how much you would like to tip\nEnter 1 for 15 percent\nEnter 2 for 18 percent\nEnter 3 for 25 percent\nEnter 4 for 30 percent\n");
+    scanf_s(" %c", &tipChoice, 1);
+
+    switch (tipChoice)
+    {
+    case '1':(tipTotal = billTotal * .15); break;
+    case '2':(tipTotal = billTotal * .18); break;
+    case '3':(tipTotal = billTotal * .25); break;
+    case '4':(tipTotal = billTotal * .30); break;
+    default: printf("Please enter a correct Tip choice");
+    }
+    printf("$%.2f", tipTotal);
+    printf("\n~~~~~~~~~~~~~~~~~~~~~~~\n");
+    return billTotal * tipTotal;
+}
+
+int main() {
+    char appetizerChoice = 0, dessertChoice = 0, entreeChoice = 0, tipChoice = 0;
+    float billTotal = 0, tipTotal = 0, subTotal = 0, discTotal = 0, finalTotal = 0, taxTotal = 0, totalDue = 0;
+    int numPeople, numParty, choiceFinish = 0, choiceAns = 0, ranNum = (rand() % 20) + 1, drinkTotal = 0, drinkResponse = 0, appetizerResponse = 0, appetizerTotal = 0, entreeResponse = 0, entreeTotal = 0, desertResponse = 0, desertTotal = 0;
+    const float disc5 = .05, disc10 = .1, tax = .0825, tip15 = .15, tip30 = .3, tip18 = .18, tip25 = .25;
+
+    printf("Welcome how many people are in your party?\n");
+    scanf_s("%d", &numParty);
+
+    if (numParty < 0)
+    {
+        printf("Please enter a positive number people\n");
+        scanf_s("%d", &numParty);
+
+    }
+    for (numPeople = 1; numPeople <= numParty; ++numPeople)
+    {
+        printf("\033\n[0;31mDrink Menu\n");
+        printf("1..Coke...............$3\n");
+        printf("2..Mountain Dew.......$3\n");
+        printf("3..Lemonade...........$3\n");
+        printf("4..Sweet Tea..........$2\n");
+        printf("5..Unsweet Tea........$2\n");
+        printf("6..Exit Drink...........\n");
+        do
+        {
+            printf("\nSeat %d please enter a drink number: ", numPeople);
+            //will be repeated until enter 6
+            scanf_s("%d", &drinkResponse);
+            switch (drinkResponse)
+            {
+            case 1: drinkTotal += 3; break;
+            case 2: drinkTotal += 3; break;
+            case 3: drinkTotal += 3; break;
+            case 4: drinkTotal += 2; break;
+            case 5: drinkTotal += 2; break;
+            }
+
+            if (drinkResponse > 6 || drinkResponse < 1)
+                //validation for if under 1 or greater than 6
+            {
+                printf("\n\nPlease enter a valid drink choice.\n");
+            }
+
+        } while (drinkResponse != 6);
+
+        printf("\n\n Total = %d", drinkTotal);
+        printf("\n~~~~~~~~~~~~~~~~~~~~~~~");
+
+
+        printf("\n\n\033[0;33mAppetizer Menu\n");
+        printf("1..Mozzarella sticks..........$4\n");
+        printf("2..Queso......................$6\n");
+        printf("3..Lobster Mac & Cheese.......$7\n");
+        printf("4..Calamari...................$5\n");
+        printf("5..Onion Rings................$5\n");
+        printf("6..Exit............................\n");
+
+
+        do
+        {
+            printf("\nSeat %d please enter a appetizer number: ", numPeople);
+            //will be repeated until enter 6
+            scanf_s("%d", &appetizerResponse);
+            switch (appetizerResponse)
+            {
+            case 1: appetizerTotal += 4; break;
+            case 2: appetizerTotal += 6; break;
+            case 3: appetizerTotal += 7; break;
+            case 4: appetizerTotal += 5; break;
+            case 5: appetizerTotal += 5; break;
+            }
+
+            if (appetizerResponse > 6 || appetizerResponse < 1)
+                //validation for if under 1 or greater than 6
+            {
+                printf("\n\nPlease enter a valid appetizer choice.\n");
+            }
+
+        } while (appetizerResponse != 6);
+
+        printf("\n\n Total = %d", appetizerTotal);
+        printf("\n~~~~~~~~~~~~~~~~~~~~~~~");
+
+
+
+        printf("\n\n\033[0;35mEntree Menu\n");
+        printf("1..Quesadillas.......................$10\n");
+        printf("2..Shrimp Linguine Alfredo...........$12\n");
+        printf("3..Coconut Shrimp....................$11\n");
+        printf("4..Filet Mignon......................$20\n");
+        printf("5..Crawfish Platter..................$23\n");
+        printf("6..Baby Back Ribs....................$28\n");
+        printf("7..Crispy Chicken Tender Salad.......$11\n");
+        printf("8..Exit.................................\n");
+
+        do
+        {
+            printf("\nSeat %d please enter a entree number: ", numPeople);
+            //will be repeated until enter 8
+            scanf_s("%d", &entreeResponse);
+            switch (entreeResponse)
+            {
+            case 1: entreeTotal += 10; break;
+            case 2: entreeTotal += 12; break;
+            case 3: entreeTotal += 11; break;
+            case 4: entreeTotal += 20; break;
+            case 5: entreeTotal += 23; break;
+            case 6: entreeTotal += 28; break;
+            case 7: entreeTotal += 11; break;
+            }
+
+            if (entreeResponse > 8 || entreeResponse < 1)
+                //validation for if under 1 or greater than 7
+            {
+                printf("\n\nPlease enter a valid entree choice.\n");
+            }
+
+        } while (entreeResponse != 8);
+
+        printf("\n\n Total = %d", entreeTotal);
+        printf("\n~~~~~~~~~~~~~~~~~~~~~~~");
+
+
+
+        printf("\n\n\033[0;32mDesert Menu\n");
+        printf("1..Triple Chocolate Meltdown.......$9\n");
+        printf("2..Cinnabon Mini Swirls...........$10\n");
+        printf("3..Key Lime Pie....................$8\n");
+        printf("4..Strawberry Cheese Cake.........$10\n");
+        printf("5..Exit..............................\n");
+
+
+        do
+        {
+            printf("\nSeat %d please enter a desert number: ", numPeople);
+            //will be repeated until enter 5
+            scanf_s("%d", &desertResponse);
+            switch (desertResponse)
+            {
+            case 1: desertTotal += 9; break;
+            case 2: desertTotal += 10; break;
+            case 3: desertTotal += 8; break;
+            case 4: desertTotal += 10; break;
+            }
+
+            if (desertResponse > 5 || desertResponse < 1)
+                //validation for if under 1 or greater than 5
+            {
+                printf("\n\nPlease enter a valid desert choice.\n");
+            }
+
+        } while (desertResponse != 5);
+
+        printf("\n\n Total = %d", desertTotal);
+
+        printf("\n~~~~~~~~~~~~~~~~~~~~~~~\n");
+    }
+
+    int discount = 0;
+    randomDiscount(&discount);
+    printDiscount(discount);
+
+    subTotal = calculateSubtotal(drinkTotal, appetizerTotal, entreeTotal, desertTotal);
+    discTotal = subTotal * discount / 100;
+    finalTotal = subTotal - discTotal;
+    billTotal = calculateBillTotal(finalTotal, discount, &taxTotal);
+
+
+    printf("\n~~~~~~~~~~~~~~~~~~~~~~~\n");
+
+    tipTotal = calculateTip(billTotal, tipChoice);
+
+    totalDue = finalTotal + tipTotal + taxTotal;
+
+    printf("\n\n\033[0;34mPress 1 to continue to receipt!\n");
+    scanf_s(" %d", &choiceAns);
+
+    do {
+        switch (choiceAns) {
+        case 1:
+            printReceipt(drinkTotal, appetizerTotal, entreeTotal, desertTotal, subTotal, discount, taxTotal, billTotal, tipTotal, totalDue);
+            break;
+        default:
+            printf("Please enter 1 to continue to receipt!\n");
+            break;
+        }
+    } while (choiceAns != 1);
+
+    printf("\n\n\033[0;34mAre you done? Press 1 and we will see you soon!\n");
+    scanf_s(" %d", &choiceFinish);
+    do
+    {
+        switch (choiceFinish)
+        {
+        case 1:; break;
+        default: printf("please enter 1 to finish\n"); break;
+        }
+    } while (choiceFinish != 1);
+    system("cls");
+
+    return 0;
+}
