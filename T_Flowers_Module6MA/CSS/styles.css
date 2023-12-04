@@ -1,0 +1,363 @@
+         /*this edits the body as a whole */
+         .body_content {
+                height: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+                border: 2px groove orange;
+                background-color: aqua;
+                    }
+/* styling for the form */ 
+        form {
+                font-weight: bold;
+                font-size: 20px;
+        }
+
+        input {
+                padding : 2px;
+                height: 40px;
+                font-size: larger;
+        }
+        button {
+                padding : 10px;
+                font-size: larger;
+        }
+/* --------------------------------------------------- */  
+/* styling for the table */     
+        table {
+                background: lightcyan;
+                border: 1px solid black;
+                padding-top: 10px;
+                align-items: center;
+        }
+
+        td {
+                text-align: center;
+        }
+
+        caption {
+                text-align: center;
+                font-weight: bold;
+        }
+
+/* --------------------------------------------------- */    
+/* setting video size */  
+video {
+        width: 25%;
+        height: 25%;
+}
+/* --------------------------------------------------- */  
+                      .text-image img {
+                        float: left; 
+                        margin-right: 10px;
+                      }
+                      
+                      .text-image p {
+                        float: left; 
+                      }
+                      .text-image {
+                        overflow: auto;
+                        width: 500px;
+                      }
+        .float {
+                float: left;
+        }
+        .interest {
+                position: relative;
+        }
+        /* Columns stack on top of each other on small screens */
+.text-image {
+        display: flex;
+        flex-direction: column;
+        
+      }
+      
+      /* allows columns to form on wider screens */
+      @media (min-width: 768px) {
+        .text-image {
+          flex-direction: row;
+        }
+        
+        .text-image {
+          width: 50%; 
+        }
+      }
+        .biography {
+                background-color: lightcoral;
+        }
+        
+                     /*targets all parargraphs with this class*/
+                .p {
+                        font-family: Arial, Helvetica, sans-serif;
+                        color: darkred;
+                }
+                 /*block qoute styling*/
+                blockquote {
+                        font-style: italic;
+                        color: orangered;
+                }
+                /*pseudo-class*/
+                blockquote:hover {
+                        background-color: aquamarine;
+                }
+                /*pseudo-element*/
+                p::first-letter {
+                        font-style: italic;
+                        color: green;
+                }
+                /*pseudo element*/
+                div::first-letter {
+                        font-style: italic;
+                }
+
+                 /*I removed the p class from my block qoute to give it its own style*/
+                  /* main styling*/
+        main.main_content {
+        font-family: 'Playfair Display', serif;
+        font-size: 24px;
+        font-style: bold;
+        height: fit-content;
+        }
+
+        main a:visited {
+        color: red;
+        }
+        main a:hover {
+        color: yellow;
+        font-size: 28px;
+        }
+        main a:active {
+        color: blue;
+        }
+        main a:link {
+        color: white;
+        border: none;
+        padding: 15px;
+        }
+                
+        
+        ul.ul_links {
+        display: flex;
+        flex-direction: row;
+        list-style-type: none;
+        padding-left: 0;
+        justify-content: center;  
+                }
+                                              
+        ul.ul_links li {
+        margin-right: 20px;  
+                }
+                    
+                    nav a:link {
+                        line-height: 25px;
+                        padding-top: 15px;
+                        padding-bottom: 15px;
+                        padding-left: 32px;
+                        padding-right: 32px;
+                        color: white;
+                        border: none;
+                        
+
+                    }
+                    nav a:visited {
+                        color: blue;
+                    }
+                    nav a:hover{
+                        color: orangered;
+                    }
+                    nav a:active {
+                        color: blueviolet;
+                    }
+                    
+                    nav li{
+                        display: inline-block;
+                        
+                    }
+                     /*targets headers with this class*/
+                    header.main_head {
+                        border: 10px pink;
+                        border-style: ridge;
+        
+                    }
+        .Links a:visited {
+        color: green;
+                        }
+        .Links a:hover {
+        color: black;
+                        }
+        .Links a:active {
+        color: yellow;
+                }
+        .Links a:link {
+        color: blue;
+                }
+        #pictures {
+        display: grid; /* turn the #pictures div into a grid */
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for wide screens */
+        gap: 10px; /* gap between grid items */
+                }
+                                                    
+        @media (max-width: 768px) { /* for tablets */
+        #pictures {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+        }
+                }
+                                                    
+        @media (max-width: 480px) { /* for smartphones */
+        #pictures {
+        grid-template-columns: repeat(1, 1fr); /* 1 column for smartphones */
+        }
+                }
+                                                    
+        .picture-item {
+        width: 100%;
+        height: auto;
+                }
+                                           
+        .col {
+        background: lightpink;
+        margin: auto;
+        flex-wrap: wrap;
+        overflow: hidden;
+                }
+        
+                h1.heading {
+                    font-size: 26px;
+                    font-weight: bold;
+                    line-height: 12px;
+                    font-family: 'Times New Roman', Times, serif;
+                    font-style: italic;
+                    color: darkgreen;
+                    text-align: center;
+                  }
+                .header2 {
+                        text-align: left;
+                }
+                .header3 {
+                        text-align: left;
+                }
+                .heading1 {
+                        text-align: left;
+                }
+                h2 {
+                    font-size: 22px;
+                    font-weight: bold;
+                    line-height: 12px;
+                    font-family: 'Playfair Display', serif;
+                    font-style: bold;
+                    color: orangered;
+                    text-align: center;
+                    }
+
+                h3 {
+                    font-size: 16px;
+                    line-height: 12px;
+                    font-family: 'Playfair Display', serif;
+                    font-style: bold;
+                    }
+                dt {
+                    font-weight: bold;
+                    }
+                div {
+                    text-align: center;
+                    image-orientation: center;  
+                    }
+
+                ol {
+                      font-family: 'Playfair Display', serif;
+                      font-size: 16px;
+                      list-style: none;
+                      padding-left: 0;
+        
+                }
+                ol.ol_list {
+                        position: relative;
+                        padding-left: 26px;
+                        font-family: 'Playfair Display', serif;
+                        line-height: 22px;
+                        list-style-type: square;
+                        color: red;
+                }
+                ul.list {
+                        position: relative;
+                        padding-left: 26px;
+                        font-family: 'Playfair Display', serif;
+                        line-height: 22px;
+                        list-style-type: upper-roman;
+                        color: blue;
+                }
+                .gallery {
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                }
+        
+        
+        
+          
+                article {
+                        image-orientation: center;
+                        }
+
+                
+                /* screens up to 768px wide */
+                @media (max-width: 768px) {
+                        .col {
+                        display: block;
+                        width: 100%;
+                        margin: 5px 5px 10px;
+                        }
+                }
+
+
+
+
+                @media (max-width: 768px) {
+                        /* nav wrap for smaller screens */
+                        nav {
+                          display: flex;
+                        }
+                      
+                        nav ul {
+                          display: flex;
+                          flex-wrap: wrap;
+                          flex-direction: column;
+                        }
+                      
+                      }        
+
+        
+        
+                footer {
+                        position: relative;
+                        color: aquamarine;
+                        bottom: 0;
+                        width: 100%;
+                        text-align: center;
+                        background-color: #226BFC;
+                        height: 22px;   
+                        clear: both;
+                        }
+                        .footer a:visited {
+                                color: purple;
+                                padding: 10px;
+                        }
+                        .footer a:link {
+                        color: red; /* add a color to make the links visible */
+                        padding: 10px; /* add padding to create space around the links */
+                        }
+                        
+                        /* Apply hover effect to the links in the footer */
+                        .footer a:hover {
+                        background-color: orangered; /* change the background color when hovering */
+                        color: yellow; /* change the text color when hovering */
+                        }
+                        .footer :active {
+                                color: green;
+                        }
+        
+        
+                
+        
+                        
+                
+                
+        
